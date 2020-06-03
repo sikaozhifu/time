@@ -6,6 +6,21 @@
 </head>
 <script type="text/javascript" src ="https://cdn.bootcss.com/echarts/3.7.1/echarts.min.js"></script>
 <script type="text/javascript" src ="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js" ></script>
+<style type="text/css">
+    body {
+        font-family: "Open Sans", Arial, sans-serif;
+        line-height: 1.5;
+        font-size: 16px;
+        color: #848484;
+        background-color: #ffffff;
+        background-size: cover;
+        background-position: -30% center;
+        background-repeat: no-repeat;
+        height: 100%;
+        opacity: 50%;
+        background-image: url(../static/image/login-bg.jpg);
+    }
+</style>
 <body>
 <div id="bar_main" style="float:left;width: 600px;height:400px;"></div>
 <div id="pie_main" style="float:left;width: 600px;height:400px;"></div>
@@ -23,7 +38,7 @@
         },
         tooltip: {},
         legend: {
-            data:['销量']
+            data:['销量','金额']
         },
         xAxis: {
             data: []
@@ -34,6 +49,15 @@
         series: [
             {
                 name: '销量',
+                type: 'bar',
+                showBackground: true,
+                backgroundStyle: {
+                    color: 'rgba(220, 220, 220, 0.8)'
+                },
+                data: []
+            },
+            {
+                name: '金额',
                 type: 'bar',
                 showBackground: true,
                 backgroundStyle: {
@@ -169,11 +193,17 @@
                 xAxis: {
                     data: cat_id_data
                 },
-                series: [{
-                    // 根据名字对应到相应的系列
-                    name: '销量',
-                    data: buy_mount_data
-                }]
+                series: [
+                    {
+                        // 根据名字对应到相应的系列
+                        name: '销量',
+                        data: buy_mount_data
+                    },
+                    {
+                        name:'金额',
+                        data:buy_mount_data
+                    }
+                ]
             });
             pie_chart.setOption({
                 legend: {
